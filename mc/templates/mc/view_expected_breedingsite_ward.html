@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for key, value in sites_count.items %}
+<p><a href="{% url 'mc:view_breedingsites_locality' id=key %}">{{key}}</a> - {{value}}</p>
+{% endfor %}
+{% endblock %}
