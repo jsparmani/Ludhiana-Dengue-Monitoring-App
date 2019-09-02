@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 {% load form_loop %}
+{% block head %}
+<style>
+    #map {
+        height: 300px;
+        width: 100%;
+    }
+</style>
+{% endblock %}
 {% block content %}
 
 {% for key, value in sites_count.items %}
@@ -7,8 +15,22 @@
 {{value|form_loop:0}} - Long {{value|form_loop:1}}
 {% endfor %}
 
-<button onclick="mapify()">Button</button>
-<div id="map"></div>
+<button>
+    <a href="#mapelement" class="btn orange darken-3 modal-trigger" onclick="mapify()">
+        <span>Mapify</span>
+        <i class="material-icons right">map</i>
+    </a>
+</button>
+<div class="container">
+    <div class="modal" id="mapelement">
+        <div class="modal-content">
+            <div id="map"></div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="modal-close btn orange">Close</a>
+        </div>
+    </div>
+</div>
 
 <script>
     var locations = []
@@ -37,7 +59,7 @@
 </script>
 
 <script>
-    {% for key, value in sites_count.items %}
+    {%for key, value in sites_count.items %}
     addLoc({{value|form_loop:0}}, {{value|form_loop:1}})
     {% endfor %}
 </script>

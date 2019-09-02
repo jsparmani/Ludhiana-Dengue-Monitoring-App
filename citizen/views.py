@@ -8,7 +8,7 @@ from location import models as loc_models
 def expected_breedingsites_details(request):
 
     if request.method == 'POST':
-        form = forms.ExpectedBreedingSiteForm(request.POST)
+        form = forms.ExpectedBreedingSiteForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('home')

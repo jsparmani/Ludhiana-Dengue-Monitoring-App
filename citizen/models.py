@@ -9,6 +9,7 @@ class ExpectedBreedingSite(models.Model):
     address = models.TextField(blank=False)
     locality = models.ForeignKey(
         'location.Locality', related_name='expectedbreedingsites', on_delete=models.CASCADE, blank=False)
+    image = models.ImageField(upload_to='images/breeding-sites', blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -29,6 +30,12 @@ class ExpectedPatient(models.Model):
     a1 = models.BooleanField(default=False, blank=False)
     a2 = models.BooleanField(default=False, blank=False)
     a3 = models.BooleanField(default=False, blank=False)
+    a4 = models.BooleanField(default=False, blank=False)
+    a5 = models.BooleanField(default=False, blank=False)
+    a6 = models.BooleanField(default=False, blank=False)
+    a7 = models.BooleanField(default=False, blank=False)
+    a8 = models.BooleanField(default=False, blank=False)
+
     created_at = models.DateTimeField(auto_now=True)
 
     class Meta:

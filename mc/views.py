@@ -20,7 +20,7 @@ def view_breedingsites_ward(request, id):
     for ward in wards:
         count = cit_models.ExpectedBreedingSite.objects.all().filter(
             locality__ward=ward).count()
-        sites_count[ward.ward_id] = count
+        sites_count[ward.ward_id] = [ward.lat, ward.lng, count]
     return render(request, 'mc/view_expected_breedingsite_ward.html', {'sites_count': sites_count})
 
 
@@ -30,5 +30,5 @@ def view_breedingsites_locality(request, id):
     for locality in localities:
         count = cit_models.ExpectedBreedingSite.objects.all().filter(
             locality=locality).count()
-        sites_count[locality.name] = count
+        sites_count[locality.name] = [locality.lat, locality.lng, count]
     return render(request, 'mc/view_expected_breedingsite_locality.html', {'sites_count': sites_count})

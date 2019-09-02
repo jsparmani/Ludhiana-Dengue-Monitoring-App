@@ -20,7 +20,7 @@ def view_expected_patients_ward(request, id):
     for ward in wards:
         count = cit_models.ExpectedPatient.objects.all().filter(
             locality__ward=ward).count()
-        sites_count[ward.ward_id] = count
+        sites_count[ward.ward_id] = [ward.lat, ward.lng, count]
     return render(request, 'health/view_expected_patients_ward.html', {'sites_count': sites_count})
 
 
@@ -30,5 +30,5 @@ def view_expected_patients_locality(request, id):
     for locality in localities:
         count = cit_models.ExpectedPatient.objects.all().filter(
             locality=locality).count()
-        sites_count[locality.name] = count
+        sites_count[locality.name] = [locality.lat, locality.lng, count]
     return render(request, 'health/view_expected_patients_locality.html', {'sites_count': sites_count})
