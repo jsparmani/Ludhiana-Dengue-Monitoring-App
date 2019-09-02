@@ -24,7 +24,7 @@
                 <tbody>
                     {% for key, value in sites_count.items %}
                     <tr>
-                        <td>{{ key }}</td>
+                        <td><a href="{% url 'health:view_patients_details' name=key %}">{{ key }}</a></td>
                         <td>{{value|form_loop:2}}</td>
                     </tr>
                     {% endfor %}

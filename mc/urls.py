@@ -10,4 +10,6 @@ urlpatterns = [
          name='view_breedingsites_ward'),
     path('locality-expected-breeding/<int:id>/', views.view_breedingsites_locality,
          name='view_breedingsites_locality'),
+    path('locality-expected-breeding-complaints/<str:name>/', views.view_breedingsites_complaint,
+         name='view_breedingsites_complaint'),
 ]

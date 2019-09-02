@@ -24,7 +24,7 @@
                 <tbody>
                     {% for key, value in sites_count.items %}
                     <tr>
-                        <td>{{ key }}</td>
+                        <td><a href="{% url 'mc:view_breedingsites_complaint' name=key %}">{{ key }}</a></td>
                         <td>{{value|form_loop:2}}</td>
                     </tr>
                     {% endfor %}

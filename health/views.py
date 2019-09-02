@@ -70,3 +70,10 @@ def view_expected_patients_locality(request, id):
     jsondata = json.dumps(jsondata)
 
     return render(request, 'health/view_expected_patients_locality.html', {'sites_count': sites_count, 'jsondata': jsondata})
+
+
+@login_required
+def view_patients_details(request, name):
+    patients = cit_models.ExpectedPatient.objects.all().filter(
+        locality__name__exact=name)
+    return render(request, 'health/view_expected_patient_complaints.html', {'patients': patients})

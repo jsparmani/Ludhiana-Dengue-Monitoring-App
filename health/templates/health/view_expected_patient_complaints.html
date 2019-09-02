@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col l10 m10 s10 offset-m1 offset-l1 offset-s1">
+            <table class="striped orange centered lighten-3">
+                <thead class="orange">
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Locality</th>
+                        <th>A1</th>
+                        <th>A2</th>
+                        <th>A3</th>
+                        <th>A4</th>
+                        <th>A5</th>
+                        <th>A6</th>
+                        <th>A7</th>
+                        <th>A8</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for patient in patients %}
+                    <tr>
+                        <td>{{patient.name}}</td>
+                        <td>{{patient.phone}}</td>
+                        <td>{{patient.address}}</td>
+                        <td>{{patient.locality}}</td>
+                        <td>{{patient.a1}}</td>
+                        <td>{{patient.a2}}</td>
+                        <td>{{patient.a3}}</td>
+                        <td>{{patient.a4}}</td>
+                        <td>{{patient.a5}}</td>
+                        <td>{{patient.a6}}</td>
+                        <td>{{patient.a7}}</td>
+                        <td>{{patient.a8}}</td>
+                        <td>{{patient.created_at}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

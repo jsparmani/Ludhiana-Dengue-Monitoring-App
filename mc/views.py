@@ -79,3 +79,10 @@ def view_breedingsites_locality(request, id):
     jsondata = json.dumps(jsondata)
 
     return render(request, 'mc/view_expected_breedingsite_locality.html', {'sites_count': sites_count, 'jsondata': jsondata})
+
+
+@login_required
+def view_breedingsites_complaint(request, name):
+    breedingsites = cit_models.ExpectedBreedingSite.objects.all().filter(
+        locality__name__exact=name)
+    return render(request, 'mc/view_expected_breedingsite_complaints.html', {'breedingsites': breedingsites})

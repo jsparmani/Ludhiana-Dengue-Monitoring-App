@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col l10 m10 s10 offset-m1 offset-l1 offset-s1">
+            <table class="striped orange centered lighten-3">
+                <thead class="orange">
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Locality</th>
+                        <th>Image</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for site in breedingsites %}
+                    <tr>
+                        <td>{{site.name}}</td>
+                        <td>{{site.phone}}</td>
+                        <td>{{site.address}}</td>
+                        <td>{{site.locality}}</td>
+                        {% if site.image %}
+                        <td><img src="{{site.image.url}}" height='50px' width='50px' class="materialboxed" /></td>
+                        {% else %}
+                        <td>-</td>
+                        {% endif %}
+                        <td>{{site.created_at}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
