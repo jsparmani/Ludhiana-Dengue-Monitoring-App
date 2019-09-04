@@ -1,10 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<div class="container">
+    <div class="modal" id="questionelement">
+        <div class="modal-content">
+            A1 - Abrupt onset of high fever persistent for more than two days <br>
+            A2 - Severe frontal headache <br>
+            A3 - Pain behind the eyes which worsens with eye movement<br>
+            A4 - Muscle and joint pains<br>
+            A5 - Loss of sense of taste and appetite<br>
+            A6 - Reddish spots over chest, lower and upper limbs<br>
+            A7 - Nausea and vomiting<br>
+            A8 - Lethargy<br>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="modal-close btn orange">Close</a>
+        </div>
+    </div>
+</div>
+
+
 <div class="container">
     <br>
     <div class="row">
         <div class="col l10 m10 s10 offset-m1 offset-l1 offset-s1">
+            <a href="#questionelement" class="btn orange darken-3 modal-trigger">
+                                <span>Questions</span>
+                                <i class="material-icons right">graphic_eq</i>
+                            </a>
+            
             <table class="striped orange centered lighten-3">
+            <br><br>
                 <thead class="orange">
                     <tr>
                         <th>Name</th>

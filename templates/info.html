@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<ol class="container">
+    <h3 align="center">Info Page</h3>
+    <ol>
+        <li><a href="{% url 'view_info_page' uid=1 %}">
+                <h5>Do's and Don'ts</h5>
+            </a><br></li>
+        <li><a href="{% url 'view_info_page' uid=2 %}">
+                <h5>FAQs</h5>
+            </a><br></li>
+        <li><a href="{% url 'view_info_page' uid=3 %}">
+                <h5>Aedes Mosquito</h5>
+            </a><br></li>
+        <li><a href="{% url 'view_info_page' uid=10 %}">
+                <h5>Symptoms</h5>
+            </a><br></li>
+        <li><a href="{% url 'view_info_page' uid=5 %}">
+                <h5>Signs and symptoms for dengue haemorrhagic fever/ dengue shock
+
+                    syndrome.
+            </a></h5>
+            </a><br></li>
+        <li><a href="{% url 'view_info_page' uid=4 %}">
+                <h5>Prevention</h5>
+            </a><br></li>
+        <li><a href="{% url 'view_info_page' uid=6 %}">
+                <h5>Recommended Tests</h5>
+            </a><br></li>
+        <li><a href="{% url 'view_info_page' uid=7 %}">
+                <h5>Myths</h5>
+            </a><br></li>
+        <li><a href="{% url 'view_info_page' uid=8 %}">
+                <h5>Dry Day</h5>
+            </a><br></li>
+        <li><a href="{% url 'view_info_page' uid=9 %}">
+                <h5>Message</h5>
+            </a><br></li>
+
+    </ol>
+</ol>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

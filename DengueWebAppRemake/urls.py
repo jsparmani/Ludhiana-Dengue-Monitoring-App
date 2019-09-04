@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('', include('pwa.urls')),
+    path('info/', views.info, name='info'),
+    path('info-page/<int:uid>/', views.view_info_page, name='view_info_page'),
     path('fault/<str:fault>/', views.fault, name='fault'),
     path('account/', include('account.urls')),
     path('location/', include('location.urls')),

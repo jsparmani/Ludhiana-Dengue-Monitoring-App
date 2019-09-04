@@ -31,7 +31,7 @@
 <body class="orange lighten-5">
 
     <nav class="nav-wraper orange darken-2">
-            <a href="{% url 'home' %}" class="brand-logo" style="padding-left:20px;">Dengue</a>
+            <a href="{% url 'home' %}" class="brand-logo hide-on-small" style="padding-left:20px;">DMA Patiala</a>
             <a href="#" class="sidenav-trigger" data-target="mobile-links">
                 <i class="material-icons">menu</i>
             </a>
@@ -62,6 +62,7 @@
                 {% endif %}
 
                 <li><a class='dropdown-trigger' href='#' data-target='dropdown-citizens'>Citizens</a></li>
+                <li><a href='{% url 'info' %}'>Info</a></li>
 
                 {% if user.is_authenticated %}
                 <li>
@@ -73,6 +74,36 @@
                 </li>
                 {% endif %}
             </ul>
+
+            <ul class="sidenav orange lighten-3" id="mobile-links">
+                    {% if user.pk in cluster_all %}
+
+                <li><a href="{% url 'mc:view_expected_breedingsite_cluster' %}">Reported Breeding</a></li>
+                {% endif %}
+
+                {% if user.pk in health_all %}
+                <li><a href="{% url 'mc:view_expected_breedingsite_cluster' %}">Reported Breeding</a></li>
+                <li><a href="{% url 'health:view_expected_patients_cluster' %}">Expected Patients</a></li>
+
+                {% endif %}
+                
+                {% if user.pk in dc_all %}
+
+                {% endif %}
+
+                <li><a class='dropdown-trigger' href='#' data-target='dropdown-citizens'>Citizens</a></li>
+                <li><a href='{% url 'info' %}'>Info</a></li>
+
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'account:logout' %}">Logout</a>
+                </li>
+                {% elif not user.is_authenticated %}
+                <li>
+                    <a href="{% url 'account:login' %}">Login</a>
+                </li>
+                {% endif %}
+                </ul>
 
         
     </nav>
