@@ -4,6 +4,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+PWA_SERVICE_WORKER_PATH = os.path.join(
+    BASE_DIR, 'static/js', 'serviceworker.js')
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,6 +32,7 @@ INSTALLED_APPS = [
     'location',
     'citizen',
     'mc',
+    'pwa',
     'health'
 ]
 
@@ -130,3 +133,50 @@ EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = MEDIA_DIR
+
+
+PWA_APP_NAME = 'Dengue Patiala'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_START_URL = '/'
+PWA_APP_ICONS = [
+    {
+        "src": "/img/icons/icon-72x72.png",
+        "type": "image/png",
+        "sizes": "72x72"
+    },
+    {
+        "src": "/static/icons/icon-96x96.png",
+        "type": "image/png",
+        "sizes": "96x96"
+    },
+    {
+        "src": "/static/icons/icon-128x128.png",
+        "type": "image/png",
+        "sizes": "128x128"
+    },
+    {
+        "src": "/static/icons/icon-144x144.png",
+        "type": "image/png",
+        "sizes": "144x144"
+    },
+    {
+        "src": "/static/icons/icon-152x152.png",
+        "type": "image/png",
+        "sizes": "152x152"
+    },
+    {
+        "src": "/static/icons/icon-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+    },
+    {
+        "src": "/static/icons/icon-384x384.png",
+        "type": "image/png",
+        "sizes": "384x384"
+    },
+    {
+        "src": "/static/icons/icon-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+    }
+]
