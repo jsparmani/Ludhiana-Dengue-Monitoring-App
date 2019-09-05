@@ -1,38 +1,70 @@
 {% extends 'base.html' %}
+{% block head %}
+<style>
+    .image-div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .image-div img {
+            height: 200px;
+            width: 200px;
+        }
+    }
+
+    @media only screen and (max-width: 700px) {
+        .image-div img {
+            height: 150px;
+            width: 150px;
+        }
+    }
+
+    @media only screen and (max-width: 550px) {
+        .image-div img {
+            height: 120px;
+            width: 120px;
+        }
+    }
+</style>
+{% load staticfiles %}
+{% endblock %}
 {% block content %}
 
 <div class="slider">
     <ul class="slides">
         <li>
-            <img
-                src="../static/images/images-fumigation-500x500.jpg">
+            <img src="../static/images/images-fumigation-500x500.jpg">
             <!-- random image -->
             <div class="caption left-align">
             </div>
         </li>
         <li>
-            <img
-                src="../static/images/img-2.jpg">
+            <img src="../static/images/img-2.jpg">
             <!-- random image -->
             <div class="caption left-align">
             </div>
         </li>
         <li>
-            <img
-                src="../static/images/img-3.jpg">
+            <img src="../static/images/img-3.jpg">
             <!-- random image -->
             <div class="caption right-align">
 
             </div>
         </li>
         <li>
-            <img
-                src="../static/images/img-4.jpg">
+            <img src="../static/images/img-4.jpg">
             <!-- random image -->
             <div class="caption center-align">
             </div>
         </li>
     </ul>
+</div>
+
+<div class="container image-div">
+    <img src="{% static 'images/health_mission.png' %}" />
+    <img src="{% static 'images/punjabgov.svg' %}" width="250px" height="250px" />
+    <img src="{% static 'images/nvbdcp.jpg' %}" width="250px" height="250px" />
 </div>
 
 {% endblock %}

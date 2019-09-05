@@ -8,10 +8,10 @@ from location import models as loc_models
 def expected_breedingsites_details(request):
 
     if request.method == 'POST':
-        form = forms.ExpectedBreedingSiteForm(request.POST, request.FILES)
+        form = forms.ExpectedBreedingSiteForm(request.POST, request.FILESs)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('info')
         else:
             return redirect('fault', fault="Server Error!")
     else:
@@ -25,7 +25,7 @@ def expected_patient_details(request):
         form = forms.ExpectedPatientForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('map')
         else:
             return redirect('fault', fault="Server Error!")
     else:

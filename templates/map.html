@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+    #map {
+        height: 500px;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <br>
+    <div id="map"></div>
+
+</div>
+
+<script>
+    var locations = [
+        [30.3397809, 76.3868797],
+        [30.3372288, 76.39735]
+    ]
+
+    function mapify() {
+        var map = new google.maps.Map(
+            document.getElementById('map'), {
+            zoom: 10,
+            center: new google.maps.LatLng(30.3466365, 76.3390132),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var marker;
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                map: map,
+            })
+        }
+
+
+    }
+
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe7cMg1l1HFoBUttsvlu4mXZtDIZV89w&callback=mapify">
+    </script>
+{% endblock content %}

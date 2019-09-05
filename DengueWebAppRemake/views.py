@@ -35,3 +35,7 @@ def view_info_page(request, uid):
         return render(request, 'message.html')
     elif uid == 10:
         return render(request, 'symptoms.html')
+
+
+def map(request):
+    return render(request, 'map.html')
