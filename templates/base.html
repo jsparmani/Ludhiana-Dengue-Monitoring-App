@@ -59,9 +59,10 @@
                 {% endif %}
 
                 <li><a class='dropdown-trigger' href='#' data-target='dropdown-citizens'>Citizens</a></li>
-                <li><a href='{% url 'info' %}'>Know More</a></li>
-                <li><a href='{% url 'map' %}'>Nearby Testing centers</a></li>
-
+                <div class ='test' style = 'display:block;'>
+                    <li><a href='{% url 'info' %}'>Know More</a></li>
+                    <li><a href='{% url 'map' %}'>Nearby Testing centers</a></li>
+                </div>
                 {% if user.is_authenticated %}
                 <li>
                     <a href="{% url 'account:logout' %}">Logout</a>
@@ -120,6 +121,15 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="{% static 'js/materialize.min.js'  %}"></script>
+    <script>
+        document.querySelector('.dropdown-trigger').addEventListener('click', test);
+
+        function test(){
+            console.log("clicked");
+            document.querySelector('.test').style.display = 'block';
+        }
+
+    </script>
 
     <script>
         $(document).ready(function () {

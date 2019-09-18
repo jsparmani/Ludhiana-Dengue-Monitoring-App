@@ -37,5 +37,6 @@ urlpatterns = [
     path('populate_locality/', views.populate_locality),
     path('populate_ward_latlng/', views.populate_ward_latlng),
     path('populate_cluster_latlng/', views.populate_cluster_latlng),
+    path('create_cluster_users/', views.create_cluster_users),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

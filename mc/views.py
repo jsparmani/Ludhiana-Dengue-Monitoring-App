@@ -8,7 +8,7 @@ import json
 
 @login_required
 def view_expected_breedingsite_cluster(request):
-    if request.user.username == 'healthpatiala':
+    if request.user.username in ['healthpatiala','dcpatiala']:
         clusters = loc_models.Cluster.objects.all()
     else:
         clusters = loc_models.Cluster.objects.all().filter(pk__exact=acc_models.ClusterUser.objects.get(

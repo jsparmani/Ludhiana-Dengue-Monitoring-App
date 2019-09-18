@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from location import models as loc_models
 from django.http import HttpResponse
 import googlemaps
-
+from account import models as acc_models
+from django.contrib.auth.models import User
 
 gmaps = googlemaps.Client(key='AIzaSyBfdLxVxC4rR_Cz-NumqwcjqWgbVZ98ZEs')
 
@@ -168,5 +169,20 @@ def populate_cluster_latlng(request):
         cluster.save()
 
     return HttpResponse("Done")
+
+
+def create_cluster_users(request):
+    for i in range(1, 8):
+        user = User.objects.create(
+                username=f'cluster{i}',
+                password='denguefree'
+            )
+
+        acc_models.ClusterUser.objects.create(
+                user=user,
+                cluster=loc_models.Cluster.objects.get(cluster_id__exact=i)
+            )
+
+    return HttpResponse("done")
 
 
