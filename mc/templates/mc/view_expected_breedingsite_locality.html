@@ -31,13 +31,13 @@
                     <tr>
                         <td>
                             <a href="#mapelement" class="btn orange darken-3 modal-trigger" onclick="mapify()">
-                                <span>Mapify</span>
+                                <span>Map</span>
                                 <i class="material-icons right">map</i>
                             </a>
                         </td>
                         <td>
                             <a href="#graphelement" class="btn orange darken-3 modal-trigger">
-                                <span>Graphify</span>
+                                <span>Graph</span>
                                 <i class="material-icons right">graphic_eq</i>
                             </a>
                         </td>
@@ -90,7 +90,7 @@
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
                     icon: {
-                        url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                        url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
                     }
                 })
             } else if (locations[i][2] > 200 && locations[i][2] <= 400) {
@@ -98,7 +98,7 @@
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
                     icon: {
-                        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                        url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                     }
                 })
             } else if (locations[i][2] > 400 && locations[i][2] <= 600) {
@@ -106,7 +106,7 @@
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
                     icon: {
-                        url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+                        url: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
                     }
                 })
             } else if (locations[i][2] > 600 && locations[i][2] <= 800) {
@@ -114,7 +114,7 @@
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
                     icon: {
-                        url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png"
+                        url: "https://maps.google.com/mapfiles/ms/icons/pink-dot.png"
                     }
                 })
             } else {
@@ -123,7 +123,7 @@
                     map: map,
                 })
             }
-            
+
         }
     }
 

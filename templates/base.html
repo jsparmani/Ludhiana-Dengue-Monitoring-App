@@ -25,27 +25,24 @@
             top: 20px;
             right: 20px;
         }
+
+        html {
+            overflow-x: hidden;
+        }
     </style>
 </head>
 
 <body class="orange lighten-5">
 
     <nav class="nav-wraper orange darken-2">
-            <a href="{% url 'home' %}" class="brand-logo hide-on-small" style="padding-left:20px;">DMA Patiala</a>
+
+            <a href="{% url 'home' %}" class="brand-logo hide-on-small" style="padding-left:10px;">DMA Patiala</a>
             <a href="#" class="sidenav-trigger" data-target="mobile-links">
                 <i class="material-icons">menu</i>
             </a>
-            <ul class="right show-on-small">
-                <li>
-                    <a href="#" class="btn-floating orange darken-4 z-depth-0 pulse">
-                        <i class="material-icons">notifications</i>
-                    </a>
-                </li>
-                <li>
-                    <span class="badge white-text orange darken-4 new">5</span>
-                </li>
-            </ul>
+
             <ul class="right hide-on-med-and-down">
+
                 {% if user.pk in cluster_all %}
 
                 <li><a href="{% url 'mc:view_expected_breedingsite_cluster' %}">Reported Breeding</a></li>
@@ -56,13 +53,13 @@
                 <li><a href="{% url 'health:view_expected_patients_cluster' %}">Expected Patients</a></li>
 
                 {% endif %}
-                
+
                 {% if user.pk in dc_all %}
 
                 {% endif %}
 
                 <li><a class='dropdown-trigger' href='#' data-target='dropdown-citizens'>Citizens</a></li>
-                <li><a href='{% url 'info' %}'>Info</a></li>
+                <li><a href='{% url 'info' %}'>Know More</a></li>
                 <li><a href='{% url 'map' %}'>Nearby Testing centers</a></li>
 
                 {% if user.is_authenticated %}
@@ -77,6 +74,7 @@
             </ul>
 
             <ul class="sidenav orange lighten-3" id="mobile-links">
+                <br><br>
                     {% if user.pk in cluster_all %}
 
                 <li><a href="{% url 'mc:view_expected_breedingsite_cluster' %}">Reported Breeding</a></li>
@@ -87,13 +85,13 @@
                 <li><a href="{% url 'health:view_expected_patients_cluster' %}">Expected Patients</a></li>
 
                 {% endif %}
-                
+
                 {% if user.pk in dc_all %}
 
                 {% endif %}
 
                 <li><a class='dropdown-trigger' href='#' data-target='dropdown-citizens'>Citizens</a></li>
-                <li><a href='{% url 'info' %}'>Info</a></li>
+                <li><a href='{% url 'info' %}'>Know More</a></li>
                 <li><a href='{% url 'map' %}'>Nearby Testing centers</a></li>
 
                 {% if user.is_authenticated %}
@@ -107,7 +105,7 @@
                 {% endif %}
                 </ul>
 
-        
+
     </nav>
 
     <ul id='dropdown-citizens' class='dropdown-content orange lighten-1'>

@@ -1,4 +1,10 @@
 from django.shortcuts import render, redirect
+from location import models as loc_models
+from django.http import HttpResponse
+import googlemaps
+
+
+gmaps = googlemaps.Client(key='AIzaSyBfdLxVxC4rR_Cz-NumqwcjqWgbVZ98ZEs')
 
 
 def home(request):
@@ -39,3 +45,128 @@ def view_info_page(request, uid):
 
 def map(request):
     return render(request, 'map.html')
+
+
+def populate_ward(request):
+    cluster = 4
+    wards = [x for x in range(28,36)]
+    for w in wards:
+        loc_models.Ward.objects.create(
+                cluster = loc_models.Cluster.objects.get(cluster_id__exact=cluster),
+                ward_id = w,
+                lat = 0,
+                lng = 0
+            )
+
+    cluster = 5
+    wards = [x for x in range(36,44)]
+    for w in wards:
+        loc_models.Ward.objects.create(
+                cluster = loc_models.Cluster.objects.get(cluster_id__exact=cluster),
+                ward_id = w,
+                lat = 0,
+                lng = 0
+            )
+
+    cluster = 6
+    wards = [x for x in range(44,53)]
+    for w in wards:
+        loc_models.Ward.objects.create(
+                cluster = loc_models.Cluster.objects.get(cluster_id__exact=cluster),
+                ward_id = w,
+                lat = 0,
+                lng = 0
+            )
+
+    cluster = 7
+    wards = [x for x in range(53,61)]
+    for w in wards:
+        loc_models.Ward.objects.create(
+                cluster = loc_models.Cluster.objects.get(cluster_id__exact=cluster),
+                ward_id = w,
+                lat = 0,
+                lng = 0
+            )
+    return HttpResponse("done")
+
+
+def populate_locality(request):
+    f1 = open('/home/denguefreepatiala/DenguePatialaPWA/DengueWebAppRemake/loc.csv','r')
+
+    a = f1.read().split('\n')
+
+
+    b=[]
+    for item in a:
+        b.append(item.split(','))
+
+
+
+    for c in b:
+        geocode_result = gmaps.geocode(f'{c[2]}, Patiala, Punjab')
+        lat = geocode_result[0]['geometry']['location']['lat']
+        lng = geocode_result[0]['geometry']['location']['lng']
+
+        loc_models.Locality.objects.create(
+            ward = loc_models.Ward.objects.get(ward_id__exact=c[0]),
+            loc_id = c[1],
+            name = c[2],
+            lat=lat,
+            lng=lng
+
+            )
+
+        for x in range(1000):
+            pass
+
+    return HttpResponse(f'Badhiya')
+
+
+def populate_ward_latlng(request):
+
+    wards = loc_models.Ward.objects.all()
+
+    for ward in wards:
+        lat = lng = 0
+        localities = ward.localities.all()
+        for locality in localities:
+            lat += float(locality.lat)
+            lng += float(locality.lng)
+
+        if len(localities):
+            lat = lat/len(localities)
+            lng = lng/len(localities)
+        else:
+            lat=lng=0
+
+        ward.lat = lat
+        ward.lng = lng
+        ward.save()
+
+    return HttpResponse("Done")
+
+
+def populate_cluster_latlng(request):
+
+    clusters = loc_models.Cluster.objects.all()
+
+    for cluster in clusters:
+        lat = lng = 0
+        wards = cluster.wards.all()
+        for ward in wards:
+            lat += float(ward.lat)
+            lng += float(ward.lng)
+
+        if len(wards):
+            lat = lat/len(wards)
+            lng = lng/len(wards)
+        else:
+            lat=lng=0
+
+        cluster.lat = lat
+        cluster.lng = lng
+        cluster.save()
+
+    return HttpResponse("Done")
+
+

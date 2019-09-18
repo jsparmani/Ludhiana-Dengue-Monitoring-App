@@ -34,5 +34,8 @@ class Locality(models.Model):
     lat = models.CharField(max_length=20)
     lng = models.CharField(max_length=20)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return f'{self.name}'

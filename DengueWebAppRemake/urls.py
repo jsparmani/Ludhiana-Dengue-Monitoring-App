@@ -32,6 +32,10 @@ urlpatterns = [
     path('location/', include('location.urls')),
     path('citizen/', include('citizen.urls')),
     path('health/', include('health.urls')),
-    path('mc/', include('mc.urls'))
+    path('mc/', include('mc.urls')),
+    path('populate_ward/', views.populate_ward),
+    path('populate_locality/', views.populate_locality),
+    path('populate_ward_latlng/', views.populate_ward_latlng),
+    path('populate_cluster_latlng/', views.populate_cluster_latlng),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
