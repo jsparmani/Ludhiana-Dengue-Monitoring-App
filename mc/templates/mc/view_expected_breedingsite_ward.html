@@ -25,7 +25,28 @@
                 <tbody>
                     {% for key, value in sites_count.items %}
                     <tr>
-                        <td><a href="{% url 'mc:view_breedingsites_locality' id=key %}">{{ key }}</a></td>
+                        <td><a href="{% url 'mc:view_breedingsites_locality' id=key %}">
+                                {% if key == 61 %}
+                                    Rajpura
+                                {% elif key == 62 %}
+                                    Nabha
+                                {% elif key == 63 %}
+                                    Samana
+                                {% elif key == 64 %}
+                                    Sanaur
+                                {% elif key == 65 %}
+                                    Patran
+                                {% elif key == 66 %}
+                                    Ghagga
+                                {% elif key == 67 %}
+                                    Ghanaur
+                                {% elif key == 68 %}
+                                    Bhadson
+                                {% else %}
+                                {{key}}
+                                {% endif %}
+                            </a>
+                            </td>
                         <td>{{value|form_loop:2}}</td>
                     </tr>
                     {% endfor %}

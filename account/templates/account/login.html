@@ -16,6 +16,27 @@
                     {{form.password}}
                     <label for="phone">Your Password</label>
                 </div>
+                <div>
+                    <ul>
+                    {% for error in form.non_field_errors %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                    {% for error in form.username.errors %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                    {% for error in form.password.errors %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
                 <div class="input-field center">
                     <button class="btn">Submit</button>
                 </div>

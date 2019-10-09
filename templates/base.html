@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/materialize.min.css'  %}">
 
-    <title>Dengue Free Patiala</title>
+    <title>Patiala Dengue Monitoring App</title>
     {% block head %}
     {% endblock %}
 
@@ -36,7 +36,7 @@
 
     <nav class="nav-wraper orange darken-2">
 
-            <a href="{% url 'home' %}" class="brand-logo hide-on-small" style="padding-left:10px;">DMA Patiala</a>
+            <a href="{% url 'home' %}" class="brand-logo hide-on-small" style="padding-left:10px;">PDMA</a>
             <a href="#" class="sidenav-trigger" data-target="mobile-links">
                 <i class="material-icons">menu</i>
             </a>
@@ -55,16 +55,16 @@
                 {% endif %}
 
                 {% if user.pk in dc_all %}
+                <li><a href="{% url 'mc:view_expected_breedingsite_cluster' %}">Reported Breeding</a></li>
+                <li><a href="{% url 'health:view_expected_patients_cluster' %}">Expected Patients</a></li>
 
                 {% endif %}
 
-                    <a class='dropdown-trigger btn orange darken-2' href='#' data-target='dropdown1'>Citizens</a>
-
+              <a class='dropdown-trigger btn orange darken-2 left' href='#' data-target='dropdown1' style = "margin-top: 12px;">Citizens</a>
               <ul id='dropdown1' class='dropdown-content'>
-                 <li><a href='{% url 'info' %}'>Know More</a></li>
-                <li><a href='{% url 'map' %}'>Nearby Testing centers</a></li>
+                  <li><a href="{% url 'citizen:expected_patient_details' %}" class="cyan-text">Checkup</a></li>
+                  <li><a href="{% url 'citizen:expected_breedingsites_details' %}" class="cyan-text">Report Breeding</a></li>
               </ul>
-                <li><a class='dropdown-trigger' href='#' data-target='dropdown-citizens'>Citizens</a></li>
                 <li><a href='{% url 'info' %}'>Know More</a></li>
                 <li><a href='{% url 'map' %}'>Nearby Testing centers</a></li>
 
@@ -93,6 +93,8 @@
                 {% endif %}
 
                 {% if user.pk in dc_all %}
+                <li><a href="{% url 'mc:view_expected_breedingsite_cluster' %}">Reported Breeding</a></li>
+                <li><a href="{% url 'health:view_expected_patients_cluster' %}">Expected Patients</a></li>
 
                 {% endif %}
 

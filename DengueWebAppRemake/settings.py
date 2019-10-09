@@ -7,7 +7,6 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 PWA_SERVICE_WORKER_PATH = os.path.join(
     BASE_DIR, 'static/js', 'serviceworker.js')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -135,7 +134,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = MEDIA_DIR
 
 
-PWA_APP_NAME = 'Dengue Patiala'
+PWA_APP_NAME = 'Patiala Dengue Monitoring App'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_START_URL = '/'
 PWA_APP_ICONS = [
