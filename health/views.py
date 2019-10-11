@@ -7,12 +7,15 @@ import json
 
 @login_required
 def view_expected_patients_cluster(request):
+    named_clusters = ['Rajpura','Nabha','Samana','Sanaur','Patran','Ghagga','Ghanaur','Bhadson']
     clusters = loc_models.Cluster.objects.all()
     cluster_details = []
     sites_count = {}
     label = 'Expected Dengue Patients'
     data_series = [u['cluster_id'] for u in clusters.values('cluster_id')]
     data_series = [str(x) for x in data_series]
+    data_series = data_series[0:7]
+    data_series.extend(named_clusters)
     data = []
     for cluster in clusters:
         count = cit_models.ExpectedPatient.objects.all().filter(

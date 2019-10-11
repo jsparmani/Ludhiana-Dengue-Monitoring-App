@@ -8,6 +8,7 @@ import json
 
 @login_required
 def view_expected_breedingsite_cluster(request):
+    named_clusters = ['Rajpura','Nabha','Samana','Sanaur','Patran','Ghagga','Ghanaur','Bhadson']
     if request.user.username in ['healthpatiala','dcpatiala']:
         clusters = loc_models.Cluster.objects.all()
     else:
@@ -18,6 +19,8 @@ def view_expected_breedingsite_cluster(request):
     label = 'Expected Breeding Sites'
     data_series = [u['cluster_id'] for u in clusters.values('cluster_id')]
     data_series = [str(x) for x in data_series]
+    data_series = data_series[0:7]
+    data_series.extend(named_clusters)
     data = []
     for cluster in clusters:
         count = cit_models.ExpectedBreedingSite.objects.all().filter(
