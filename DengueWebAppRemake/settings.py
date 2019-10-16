@@ -16,7 +16,7 @@ SECRET_KEY = 'wgs7+d6s8h1j&$@)cvhcm%+e5y8q8!+2+9g2+a@stw%mb+uihh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['denguefreepatiala.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -134,7 +134,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = MEDIA_DIR
 
 
-PWA_APP_NAME = 'Patiala Dengue Monitoring App'
+PWA_APP_NAME = 'Ludhiana Dengue Monitoring App'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_START_URL = '/'
 PWA_APP_ICONS = [

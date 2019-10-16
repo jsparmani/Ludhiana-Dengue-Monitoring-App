@@ -50,77 +50,86 @@ def map(request):
 
 def populate_ward(request):
     cluster = 4
-    wards = [x for x in range(28,36)]
+    wards = [x for x in range(28, 36)]
     for w in wards:
         loc_models.Ward.objects.create(
-                cluster = loc_models.Cluster.objects.get(cluster_id__exact=cluster),
-                ward_id = w,
-                lat = 0,
-                lng = 0
-            )
+            cluster=loc_models.Cluster.objects.get(cluster_id__exact=cluster),
+            ward_id=w,
+            lat=0,
+            lng=0
+        )
 
     cluster = 5
-    wards = [x for x in range(36,44)]
+    wards = [x for x in range(36, 44)]
     for w in wards:
         loc_models.Ward.objects.create(
-                cluster = loc_models.Cluster.objects.get(cluster_id__exact=cluster),
-                ward_id = w,
-                lat = 0,
-                lng = 0
-            )
+            cluster=loc_models.Cluster.objects.get(cluster_id__exact=cluster),
+            ward_id=w,
+            lat=0,
+            lng=0
+        )
 
     cluster = 6
-    wards = [x for x in range(44,53)]
+    wards = [x for x in range(44, 53)]
     for w in wards:
         loc_models.Ward.objects.create(
-                cluster = loc_models.Cluster.objects.get(cluster_id__exact=cluster),
-                ward_id = w,
-                lat = 0,
-                lng = 0
-            )
+            cluster=loc_models.Cluster.objects.get(cluster_id__exact=cluster),
+            ward_id=w,
+            lat=0,
+            lng=0
+        )
 
     cluster = 7
-    wards = [x for x in range(53,61)]
+    wards = [x for x in range(53, 61)]
     for w in wards:
         loc_models.Ward.objects.create(
-                cluster = loc_models.Cluster.objects.get(cluster_id__exact=cluster),
-                ward_id = w,
-                lat = 0,
-                lng = 0
-            )
+            cluster=loc_models.Cluster.objects.get(cluster_id__exact=cluster),
+            ward_id=w,
+            lat=0,
+            lng=0
+        )
     return HttpResponse("done")
 
 
 def populate_locality(request):
-    f1 = open('/home/denguefreepatiala/DenguePatialaPWA/DengueWebAppRemake/loc.csv','r')
+    f1 = open(
+        'D:\Codes\Django\LDMA\Ludhiana-Dengue-Monitoring-App\loc.txt', 'r')
+
+    f2 = open('D:\Codes\Django\LDMA\Ludhiana-Dengue-Monitoring-App\loc_not.txt', 'a')
 
     a = f1.read().split('\n')
 
+    b = []
+    # for item in a:
+    #     b.append(item.split(','))
+    execute = 0
+    count_test = 248
+    for c in a:
+        try:
+            geocode_result = gmaps.geocode(f'{c}, Ludhiana, Punjab')
+            lat = geocode_result[0]['geometry']['location']['lat']
+            lng = geocode_result[0]['geometry']['location']['lng']
 
-    b=[]
-    for item in a:
-        b.append(item.split(','))
-
-
-
-    for c in b:
-        geocode_result = gmaps.geocode(f'{c[2]}, Patiala, Punjab')
-        lat = geocode_result[0]['geometry']['location']['lat']
-        lng = geocode_result[0]['geometry']['location']['lng']
+        except:
+            f2.write(c+'\n')
+            continue
 
         loc_models.Locality.objects.create(
-            ward = loc_models.Ward.objects.get(ward_id__exact=c[0]),
-            loc_id = c[1],
-            name = c[2],
+            ward=loc_models.Ward.objects.get(ward_id__exact=28),
+            loc_id=count_test,
+            name=c,
             lat=lat,
             lng=lng
 
-            )
+        )
+
+        count_test += 1
+        execute += 1
 
         for x in range(1000):
             pass
 
-    return HttpResponse(f'Badhiya')
+    return HttpResponse(f'Badhiya {execute}')
 
 
 def populate_ward_latlng(request):
@@ -138,7 +147,7 @@ def populate_ward_latlng(request):
             lat = lat/len(localities)
             lng = lng/len(localities)
         else:
-            lat=lng=0
+            lat = lng = 0
 
         ward.lat = lat
         ward.lng = lng
@@ -162,7 +171,7 @@ def populate_cluster_latlng(request):
             lat = lat/len(wards)
             lng = lng/len(wards)
         else:
-            lat=lng=0
+            lat = lng = 0
 
         cluster.lat = lat
         cluster.lng = lng
@@ -172,17 +181,37 @@ def populate_cluster_latlng(request):
 
 
 def create_cluster_users(request):
-    for i in range(1, 8):
+    for i in range(1, 29):
         user = User.objects.create(
-                username=f'cluster{i}',
-                password='denguefree'
-            )
+            username=f'cluster{i}',
+            password='denguefree'
+        )
+
+        san_name = ['Sh. Gurdial Singh', 'Sh. Gurdial Singh', 'Kulbir Singh', 'Pritpal Singh', 'Amit Shai', 'Jagjit Singh', 'Manjit Singh', 'Pankaj Patti', 'Gurwinder Singh', 'Sh. Gurwinder Singh', 'Amrit Pal Singh', 'Gurpreet Singh', 'Gurpreet Singh',
+                    'Aamrit Pal Singh', 'Gurpreet Singh', 'Sarbjit Singh', 'Sarbjit Singh', 'Amit Sahi', 'Varinder Mohan', 'Gurdev Singh', 'Gurdev Singh', 'Gurminder Singh', 'Manmohan Singh', 'Mohan Singh', 'Parminder Singh', 'Sukhminder Singh', 'Karam Singh', 'Kulwant Singh']
+
+        c_m = loc_models.Cluster.objects.create(
+            cluster_id=i,
+            sanitary_inspector_name=san_name[i-1],
+            sanitary_inspector_phone=0,
+            sanitary_inspector_email='hello@gmail.com',
+            lat='70',
+            lng='70'
+        )
+
+        user.set_password('denguefree')
+        user.save()
 
         acc_models.ClusterUser.objects.create(
-                user=user,
-                cluster=loc_models.Cluster.objects.get(cluster_id__exact=i)
-            )
+            user=user,
+            cluster=c_m
+        )
+
+        loc_models.Ward.objects.create(
+            cluster=c_m,
+            ward_id=i,
+            lat='70',
+            lng='70'
+        )
 
     return HttpResponse("done")
-
-
