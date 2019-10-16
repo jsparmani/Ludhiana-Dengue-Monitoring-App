@@ -9,7 +9,7 @@ import json
 @login_required
 def view_expected_breedingsite_cluster(request):
     named_clusters = ['Rajpura','Nabha','Samana','Sanaur','Patran','Ghagga','Ghanaur','Bhadson']
-    if request.user.username in ['healthpatiala','dcpatiala']:
+    if request.user.username in ['healthpatiala','dcpatiala', 'ulbpatiala']:
         clusters = loc_models.Cluster.objects.all()
     else:
         clusters = loc_models.Cluster.objects.all().filter(pk__exact=acc_models.ClusterUser.objects.get(

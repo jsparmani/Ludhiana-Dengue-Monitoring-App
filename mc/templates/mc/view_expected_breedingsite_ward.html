@@ -108,7 +108,7 @@
 
         var marker;
         for (i = 0; i < locations.length; i++) {
-            if (locations[i][2] <= 200){
+            if (locations[i][2] <= 200 && locations[i][2] > 0){
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
@@ -116,7 +116,7 @@
                         url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
                     }
                 })
-            } else if (locations[i][2] > 200 && locations[i][2] <= 400) {
+            } else if (locations[i][2] > 200 && locations[i][2] <= 400 && locations[i][2] > 0) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
@@ -124,7 +124,7 @@
                         url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                     }
                 })
-            } else if (locations[i][2] > 400 && locations[i][2] <= 600) {
+            } else if (locations[i][2] > 400 && locations[i][2] <= 600 && locations[i][2] > 0) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
@@ -132,7 +132,7 @@
                         url: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
                     }
                 })
-            } else if (locations[i][2] > 600 && locations[i][2] <= 800) {
+            } else if (locations[i][2] > 600 && locations[i][2] <= 800 && locations[i][2] > 0) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
@@ -140,7 +140,7 @@
                         url: "https://maps.google.com/mapfiles/ms/icons/pink-dot.png"
                     }
                 })
-            } else {
+            } else if (locations[i][2] > 0) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
