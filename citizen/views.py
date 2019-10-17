@@ -8,58 +8,28 @@ from location import models as loc_models
 def expected_breedingsites_details(request):
 
     if request.method == 'POST':
-        form = forms.ExpectedBreedingSiteNewForm(request.POST, request.FILES)
+        form = forms.ExpectedBreedingSiteForm(request.POST, request.FILES)
         if form.is_valid():
-            data = form.save(commit=False)
-            if form.cleaned_data['area'] != 'Urban Patiala' and form.cleaned_data['area'] != '--------':
-                try:
-                    data.locality = loc_models.Locality.objects.get(name__iexact = form.cleaned_data['area'])
-                    data.save()
-                except:
-                    return redirect('fault', fault='Server Error')
-            elif form.cleaned_data['area'] != '--------':
-                try:
-                    if form.cleaned_data['locality'] == '--------':
-                        return redirect('fault', fault='Server Error')
-                    data.locality = loc_models.Locality.objects.get(name__iexact = form.cleaned_data['locality'])
-                    data.save()
-                except:
-                    return redirect('fault', fault='Server Error')
-            else:
+            try:
+                data = form.save()
+                return redirect('view_info_page', uid=4)
+            except:
                 return redirect('fault', fault='Server Error')
-            return redirect('view_info_page', uid=4)
-        else:
-            return redirect('fault', fault="Server Error!")
     else:
-        form = forms.ExpectedBreedingSiteNewForm()
+        form = forms.ExpectedBreedingSiteForm()
         return render(request, 'citizen/expected_breedingsite_details.html', {'form': form})
 
 
 def expected_patient_details(request):
 
     if request.method == 'POST':
-        form = forms.ExpectedPatientNewForm(request.POST)
+        form = forms.ExpectedPatientForm(request.POST)
         if form.is_valid():
-            data = form.save(commit=False)
-            if form.cleaned_data['area'] != 'Urban Patiala' and form.cleaned_data['area'] != '--------':
-                try:
-                    data.locality = loc_models.Locality.objects.get(name__iexact = form.cleaned_data['area'])
-                    data.save()
-                except:
-                    return redirect('fault', fault='Server Error')
-            elif form.cleaned_data['area'] != '--------':
-                try:
-                    if form.cleaned_data['locality'] == '--------':
-                        return redirect('fault', fault='Server Error')
-                    data.locality = loc_models.Locality.objects.get(name__iexact = form.cleaned_data['locality'])
-                    data.save()
-                except:
-                    return redirect('fault', fault='Server Error')
-            else:
+            try:
+                data = form.save()
+                return redirect('map')
+            except:
                 return redirect('fault', fault='Server Error')
-            return redirect('map')
-        else:
-            return redirect('fault', fault="Server Error!")
     else:
-        form = forms.ExpectedPatientNewForm()
+        form = forms.ExpectedPatientForm()
         return render(request, 'citizen/expected_patient_details.html', {'form': form})

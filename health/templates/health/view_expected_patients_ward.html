@@ -14,42 +14,20 @@
     <div class="row">
         <div class="col l10 m10 s10 offset-m1 offset-l1 offset-s1">
             <table class="striped orange centered lighten-3">
-                <thead class="orange">
-                    <tr>
-                        <th>Ward ID</th>
-                        <th>Count</th>
-                    </tr>
-                </thead>
+                
 
 
                 <tbody>
                     {% for key, value in sites_count.items %}
                     <tr>
                         <td><a href="{% url 'health:view_expected_patients_locality' id=key %}">
-                             {% if key == 61 %}
-                                    Rajpura
-                                {% elif key == 62 %}
-                                    Nabha
-                                {% elif key == 63 %}
-                                    Samana
-                                {% elif key == 64 %}
-                                    Sanaur
-                                {% elif key == 65 %}
-                                    Patran
-                                {% elif key == 66 %}
-                                    Ghagga
-                                {% elif key == 67 %}
-                                    Ghanaur
-                                {% elif key == 68 %}
-                                    Bhadson
-                                {% else %}
-                                {{key}}
-                                {% endif %}
+                             
+                                Click for details
                         </a></td>
                         <td>{{value|form_loop:2}}</td>
                     </tr>
                     {% endfor %}
-                    <tr>
+                    {% comment %} <tr>
                         <td>
                             <a href="#mapelement" class="btn orange darken-3 modal-trigger" onclick="mapify()">
                                 <span>Map</span>
@@ -62,7 +40,7 @@
                                 <i class="material-icons right">graphic_eq</i>
                             </a>
                         </td>
-                    </tr>
+                    </tr> {% endcomment %}
                 </tbody>
             </table>
         </div>
@@ -101,7 +79,7 @@
         var map = new google.maps.Map(
             document.getElementById('map'), {
                 zoom: 10,
-                center: new google.maps.LatLng(30.3466365, 76.3390132),
+                center: new google.maps.LatLng(30.9003263,75.7866326),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 

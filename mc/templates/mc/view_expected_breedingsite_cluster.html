@@ -26,25 +26,8 @@
                     {% for key, value in sites_count.items %}
                     <tr>
                         <td><a href="{% url 'mc:view_breedingsites_ward' id=key %}">
-                                {% if key == 8 %}
-                                    Rajpura
-                                {% elif key == 9 %}
-                                    Nabha
-                                {% elif key == 10 %}
-                                    Samana
-                                {% elif key == 11 %}
-                                    Sanaur
-                                {% elif key == 12 %}
-                                    Patran
-                                {% elif key == 13 %}
-                                    Ghagga
-                                {% elif key == 14 %}
-                                    Ghanaur
-                                {% elif key == 15 %}
-                                    Bhadson
-                                {% else %}
+                                
                                 {{key}}
-                                {% endif %}
                             </a>
                         </td>
                         <td>{{value|form_loop:2}}</td>
@@ -102,7 +85,7 @@
         var map = new google.maps.Map(
             document.getElementById('map'), {
                 zoom: 10,
-                center: new google.maps.LatLng(30.3466365, 76.3390132),
+                center: new google.maps.LatLng(30.9003263,75.7866326),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 

@@ -17,24 +17,54 @@
 </div>
 
 <script>
-    var locations = [
-        [30.337316,76.39967],
-        [30.328013,76.3850029]
+    var locations_diagonostics = [
+        [30.9065209,75.8574477],
+        [30.6635723,76.2695191],
+        [30.8113103,75.4758137],
+        [30.8406502,75.9774458],
+        [30.8392638,76.184801],
+        [30.9125991,76.1935564],
+        [30.643887,75.5788407],
+        [30.7242236,76.0594214],
+        [30.6347662,75.9347474],
+    ]
+
+    var locations_treatment = [
+        [30.6635723,76.2695191],
+        [30.8113103,75.4758137],
+        [30.8406502,75.9774458],
+        [30.8392638,76.184801],
+        [30.9125991,76.1935564],
+        [30.643887,75.5788407],
+        [30.7242236,76.0594214],
+        [30.6347662,75.9347474],
+        [30.8660842,75.8576976],
+        [31.323823,75.5355512],
     ]
 
     function mapify() {
         var map = new google.maps.Map(
             document.getElementById('map'), {
             zoom: 10,
-            center: new google.maps.LatLng(30.3466365, 76.3390132),
+            center: new google.maps.LatLng(30.9003263,75.7866326),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
         var marker;
-        for (i = 0; i < locations.length; i++) {
+        for (i = 0; i < locations_diagonostics.length; i++) {
             marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                position: new google.maps.LatLng(locations_diagonostics[i][0], locations_diagonostics[i][1]),
                 map: map,
+            })
+        }
+
+        for (i = 0; i < locations_treatment.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations_treatment[i][0], locations_treatment[i][1]),
+                map: map,
+                icon: {
+                        url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                    }
             })
         }
 
